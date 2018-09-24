@@ -2,14 +2,33 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 7
+    count: 0
+  };
+
+  // Use in case arrow function doesn't work for handleIncrement
+  // constructor() {
+  //   super();
+  //   this.handleIncrement = this.handleIncrement.bind(this);
+  // }
+
+  handleIncrement = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  doHandleIncrement = () => {
+    this.handleIncrement({ id: 1 });
   };
 
   render() {
     return (
       <div>
         <span className={this.classButtonStyle()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </div>
     );
   }
